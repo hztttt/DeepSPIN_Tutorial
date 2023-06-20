@@ -1,0 +1,13 @@
+{
+    "job_name":       "ground",
+    "command":        "bash vasp.sh",
+    "log_file":       "tmp_log",
+    "backward_files": ["tmp_log"],
+    "project_id":     11069,
+    "platform":       "ali",
+    "disk_size":      100,
+    "machine_type":   "c32_m128_cpu",
+    "job_type":       "container",
+    "image_name":     "registry.dp.tech/dptech/prod-1422/deltaspin:1.0.0",
+    "result":"./"
+}
