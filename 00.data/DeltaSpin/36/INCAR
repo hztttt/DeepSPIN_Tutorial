@@ -1,0 +1,177 @@
+! INCAR
+    SYSTEM =  NiO
+    NPAR   =  1             ! sqrt(ncore) is prefered
+    PREC   =  Normal        ! Low Med Normal Accurate High
+    ENCUT  =  600           ! Plane wave kinetic energy cutoff, default is taken from POTCAR file
+    LREAL  =  .FALSE.       ! Projection done in real | reciprocal space (Default False reciprocal space)
+    ISMEAR =  -5            ! -1: Fermi smearing, 0: Gaussian smearing, 1..N: Methfessel-Paxton order N ...
+                            ! -4: tetrahedron without Blochl correction  -5: with Blochl correction
+
+! Start parameter for this Run
+    NWRITE =  2             ! Printout verbosity, Default is 2
+    ISTART =  0             ! Read WAVECAR or not  : 0-new  1-cont  2-same basic set *3-full restart
+    ICHARG =  2             ! non selfconsistent run, read CHGCAR  >10: the charge density remains constant
+    LCHARG =  .FALSE.       ! Whether the charge densities(file CHGCAR and CHG) are written
+    LWAVE  =  .FALSE.       ! Whether the orbitals(file WAVECAR) are written
+    ISYM   =  -1            ! default is 1 for US-PP 2 for PAW
+
+! Electronic Relaxation
+    ISPIN  =  2             ! (1 = off, 2 =on spin polarization default 1)
+    NELM   =  1000          ! maxmum step number of SCF, default 60
+    NELMIN =  6             ! minimum step number of SCF, default 6
+    EDIFF  =  1E-7          ! stopping-criterion for ELM, default is 1E-04
+
+! Ionic Relaxation
+    IBRION =  -1             ! ionic relax: 0=MD, 1=quasi-Newton, 2=CG,5=phonon
+!    ISIF   =  3             ! (2:force=y stress=y ions=y shape=n volume=n), default is 2
+!    NSW    =  0             !  max number of ionic steps, default 0
+
+! MAE
+    GGA_COMPAT = .FALSE.    ! apply spherical cutoff on gradient field
+                            ! it is recommended to set GGA_COMPAT=.FALSE. for non collinear calculations in VASP.4.6
+                            ! and VASP.5.2, since this improves the numerical precision of GGA calculations.
+    LMAXMIX = 4             ! l quantum number the onsite PAW charge densities are passed through the charge density mixer
+                            ! and written to the CHGCAR file.
+                            ! 4 for d and 6 for f
+                            ! For MAE, you need to set LMAXMIX already in the collinear calculation
+
+! DOS Related values
+    SIGMA  =  0.2           ! The width of the broadening in eV (Default 0.2)
+    LORBIT =  11            ! Whether PROCAR or PROOUT files are written. Partial DOS
+                            ! Set to 11 if want to see magnetic moment on each atom in OUTCAR
+    NEDOS  =  2000 
+    LWANNIER90  =  .FALSE.  ! Whether the orbitals(file WAVECAR) are written
+
+! PAW
+!  LMAXPAW = L             ! The maximum -quantum number for the evaluation of the on-site terms on the
+                           ! radial support grids in the PAW method. The default 2*l_max
+! Algorithm:
+!  ALGO    =   Fast
+! Others
+!  NUPDOWN = -1            ! Difference between number of electrons in up and down spin component
+!  LELF    =  .FALSE.      ! Whether to create an ELFCAR (electron localization function) file or not.
+
+! LDA+U Related values
+    LDAU      =  .TRUE.
+    LDAUTYPE  =  2          ! specifies which type of L(S)DA+U approach will be used
+    LDAUL     =  2 -1       !  specifies the -quantum number (one number for each species) for which the on-site interaction is added.
+                            ! -1=no on-site terms added, 1= p, 2= d, 3= f, Default: LDAUL=2
+    LDAUU     =  5.3 0.00   ! the strength of the effective on-site Coulomb interactions  one has to specify one number for each atomic species
+    LDAUJ     =  0 0.00
+    LDAUPRINT =  2
+    LASPH     =  .TRUE.
+
+! SASC
+    LAECHG    =  .FALSE.
+    RWIGS     =  1.286 0.820 
+    LNONCOLLINEAR  = .TRUE.
+    LSORBIT   =  .TRUE.
+    I_CONSTRAINED_M = 2
+    SCTYPE    =  1          ! Type of SASC calculation   0: noSASC  1: SASC(L)  2: SASC(Q)  3: SASC(QL)
+MAGMOM   = -0.76456 0.66087 -0.77526 \ 
+           -0.76456 0.66087 -0.77526 \ 
+           -0.76456 0.66087 -0.77526 \ 
+           -0.76456 0.66087 -0.77526 \ 
+           -0.71700 0.78765 -0.69845 \ 
+           -0.73796 0.58094 -0.86037 \ 
+           -0.76456 0.66087 -0.77526 \ 
+           -0.85963 0.63027 -0.69721 \ 
+           0.76456 -0.66087 0.77526 \ 
+           0.76456 -0.66087 0.77526 \ 
+           0.76456 -0.66087 0.77526 \ 
+           0.76456 -0.66087 0.77526 \ 
+           0.90839 -0.62379 0.63877 \ 
+           0.76456 -0.66087 0.77526 \ 
+           0.76456 -0.66087 0.77526 \ 
+           0.76456 -0.66087 0.77526 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000
+M_CONSTR = -0.76456 0.66087 -0.77526 \ 
+           -0.76456 0.66087 -0.77526 \ 
+           -0.76456 0.66087 -0.77526 \ 
+           -0.76456 0.66087 -0.77526 \ 
+           -0.71700 0.78765 -0.69845 \ 
+           -0.73796 0.58094 -0.86037 \ 
+           -0.76456 0.66087 -0.77526 \ 
+           -0.85963 0.63027 -0.69721 \ 
+           0.76456 -0.66087 0.77526 \ 
+           0.76456 -0.66087 0.77526 \ 
+           0.76456 -0.66087 0.77526 \ 
+           0.76456 -0.66087 0.77526 \ 
+           0.90839 -0.62379 0.63877 \ 
+           0.76456 -0.66087 0.77526 \ 
+           0.76456 -0.66087 0.77526 \ 
+           0.76456 -0.66087 0.77526 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000 \ 
+           0.00000 0.00000 0.00000
+
+! SASC(L)
+    IDECOSC  =  0                               ! Whether Lagragian coefficients are coupled   
+                                                ! 0: coupled  1: decoupled between atoms  2: decoupled between every Cartesian component
+    LAMBDA   =  96*0                            ! Initial Lagragian coefficients for SASC(L)
+    CONSTRL  =  48*1 48*0                       ! Whether the component is constrained or not   0: not constrained  1: constrained
+    NSC = 100                                   ! Maximum number of steps for each inner optimization
+    NSCMIN = 2                                  ! Minimum number of steps for each inner optimization
+    SCDIFF = 1E-6                               ! Convergence criterion of iteration (RMS)
+    SCCONVB_GRAD = 1.0 -1                       ! Break condition for local gradients of spins w.r.t. Lagragian coefficients (local field)   -1: off for the element
+    IDECAY_GRAD = 0                             ! Decay policy of gradient break condition   0: no decay  1: exponential decay  2: step down
+    SCDECAY_GRAD = 0.9                          ! Exponetial base of decayed gradient break condition (IDECAY_GRAD = 1)
+    SCGRADB = 0.1                               ! Lower bound of exponetially decayed gradient break condition
+    NGRAD = 2                                   ! Number of "steps" the gradient break condition curve includes (IDECAY_GRAD = 2)
+    NGRAD_STEP = 200 400                        ! Indices in the outer loop where the gradient break condition discontinuously decay
+    NGRAD_VALUE = 1.7 -1 \                      ! SCCONVB_GRAD for corresponding "steps"
+                  1.5 -1 
+    SCDECAY = -1                                ! Exponential decay of convergence criterion   -1: no decay  >0,<1: exponential base
+    SCDIFFB = 1E-7                              ! Lower bound of criterion decay, not gonna work if SCDECAY = -1  
+    SCCONVB = -1                                ! Break condition for Lagragian coefficients difference between two inner steps   -1: this condition is off
+    INISC = 0.01                                ! Initial trial step size
+    SCCUT = 3                                   ! Restriction of step size
+    NELMSCI = 1                                 ! Number of electronic steps BEFORE SASC(L)
+    NELMSCT = 0                                 ! Number of INTERMEDIATE normal electronic steps
+    IALGOSC = 1                                 ! Inner optimization algorithm   1: CG(F-R) 2: CG(P-R) 3: CG(H-S) 4: CG(D-Y)
+    IALGOSC_DIAG = 1                            ! Inner diagonalization algorithm   1: sub-space rotation  2: Blocked-Davidson  3: sub-space rotation with B-D for the last step
+    LCUTSC_TRIAL = .TRUE.                       ! Whether trial step size is updated acoording to last-step optimal value   TRUE: update  FALSE: do not update
+    LDESC = .FALSE.                             ! Debug mode   TRUE: on  FALSE: off
+
+! SASC(Q)
+    LAMBDA_Q   =  10 10 10 10 10 10             ! Initial Lagragian coefficients for SASC(Q)
+    CONSTRL_Q  =  1 1 1 1 1 1                   ! Whether the component is constrained or not   0: not constrained  1: constrained
+    NSC_Q      =  500                           ! Maximum number of steps for SASC(Q) iteration
+    SCDIFF_Q   =  3E-4                          ! Convergence criterion of iteration (+Inf-Norm)
+    EDIFF_Q    =  1E-6                          ! Global break condition (EDIFF) for SASC(Q)
+    INISC_Q    =  0.1                           ! Initial trial step size
+    LDESC_Q    =  .FALSE.                       ! Debug mode   TRUE: on  FALSE: off
+
+! Mixer
+    AMIX      =  0.2
+    BMIX      =  0.00001
+    AMIX_MAG  =  0.8
+    BMIX_MAG  =  0.00001
