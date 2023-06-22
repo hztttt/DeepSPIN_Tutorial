@@ -57,8 +57,8 @@
 	},
 	"validation_data": {
 	    "systems":		    ["../00.data/validation_data"],
-	    "batch_size":	    1,
-	    "numb_btch":	    9,
+	    "batch_size":	    "auto",
+	    "numb_btch":	    1,
 	    "_comment":		    "that's all"
 	},
 	"numb_steps":	        1000000,
